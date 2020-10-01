@@ -1,0 +1,8 @@
+cuando trabajamos con structuras (no globales) y funciones a la hora de llamar a la funcion en el parametro debemos meter la estructura por referencia, o sea, &estructura
+
+en la declaracion de la funcion la estructura debe ir por referencia, o sea, *estructura
+
+cuando es una unica estructura a la hora de pasar valroes en vez del punto se usa una flecha, o sea, &estructura->variable
+otra forma es asi (*estructura).variable
+
+cuando se usan vectores de estructuras se usa el punto normalmente
