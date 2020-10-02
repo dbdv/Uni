@@ -1,5 +1,5 @@
 #include<stdio.h>
-int cube(int y);
+int cube(int);
 int main(void){
 	int x;
 	for(x=1;x<=10;x++){
