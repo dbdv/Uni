@@ -2,13 +2,13 @@
 
 #define tam 20
 
-void IngresaDatos(int [], int *);
+void IngresaNumeros(int [], int *);
 int Busqueda(int [], int *, int *);
 
 int main(){
     int arreglo[tam], num, cant;
 
-    IngresaDatos(arreglo, &cant);
+    IngresaNumeros(arreglo, &cant);
 
     if(Busqueda(arreglo, &num, &cant)) printf("Se encuentra el numero %i en el arreglo\n",num);
     else printf("No se encuentra el numero %i en el arreglo\n",num);
@@ -16,7 +16,7 @@ int main(){
 return 0;
 }
 
-void IngresaDatos(int arreglo[], int *cant){
+void IngresaNumeros(int arreglo[], int *cant){
 
     do{
         printf("Cuantos numeros va a ingresar(max 20): ");
