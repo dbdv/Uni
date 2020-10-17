@@ -7,36 +7,38 @@ void ImprimirString(char[], int *);
 
 int main(){
 
-    int control=0;
+    int cant;
     char MiCadena[tam];
 
-    IngresoString(MiCadena, &control);
-    ImprimirString(MiCadena, &control);
+    IngresoString(MiCadena, &cant);
+    ImprimirString(MiCadena, &cant);
 
 return 0;
 }
 
-void IngresoString(char cadena[], int *control){
+void IngresoString(char cadena[], int *cant){
 
     int i=0;
     do{
         i++;
 
-        if(i != 1)
-            printf("\tERROR\n\tNo puede ingresar esa cantidad.\n");
+        if(i != 1) printf("\tERROR\n\tNo puede ingresar esa cantidad.\n");
 
         printf("Puede ingresar hasta hasta 9 caracteres\nCuantos va a ingresar?: ");
-        scanf("%i",control);
-    }while(*control >= tam);
+        scanf("%i",cant);
+    }while(*cant >= tam);
 
-    printf("Ingrese una palabra: ");
-    scanf("%9s",cadena);
+    for(i = 0; i < *cant; i++){
+        printf("Ingrese un caracter: ");
+        getchar();
+        scanf("%c",&cadena[i]);
+    }
 }
 
-void ImprimirString(char cadena[], int *control){
+void ImprimirString(char cadena[], int *cant){
 
     printf("\tPosicion Valor\n");
-    for(int i = 0; i <= *control - 1; i++){
+    for(int i = 0; i <= *cant - 1; i++){
         printf("\t%i\t %c\n",i+1,cadena[i]);
     }
 }
