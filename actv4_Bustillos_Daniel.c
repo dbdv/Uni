@@ -32,7 +32,7 @@ return 0;}
 void cargar_n_dni(long dni[], int *cant){
     int aux = *cant, igual;
     do{
-        printf("Escriba cuantos DNI va a cargar(0-%i): ",tam-*cant);
+        printf("Escriba cuantos DNI va a cargar(1-%i): ",tam-aux);
         scanf("%i", cant);
         *cant += aux;
         if(*cant < 0 || *cant > tam) printf("La cantidad ingresada es inv%clida.\n\n",160);
