@@ -38,4 +38,9 @@ int main(){
 		direc direcEmpleado;
 		short estCivil, cantHijos, sexo;
 	};
+	struct aula{
+		short id, cantMesas, cantSillas, cantPizarras, tipo;
+		char ubic[max];
+		proyector proyecAula;
+	};
 return 0;}
