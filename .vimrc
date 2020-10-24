@@ -12,4 +12,5 @@ set laststatus=2
 set expandtab
 set autoindent
 filetype indent on
-
+autocmd filetype c nnoremap <F4> :!gcc % -o %r <CR>
+autocmd filetype c nnoremap <F5> :!gcc % -o %r && ./%r <CR>
