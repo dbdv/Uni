@@ -127,13 +127,14 @@ void modificar_pat(patentes arreglo[]){
     int i, j=0, n;
 
     printf("Patente a modificar: ");
+getchar();
     scanf("%[^\n]s", modificar);
 
     n = cant_localizacion_pat(arreglo, modificar);
 
     for(i = 0; j < n; i++)
         if(!strcmp(arreglo[i].patente, modificar)){
-            strcpy(arreglo[i].patente, modificar);
+            strcpy(arreglo[i].patente, "AAXXXAA");
             j++;
         };
 

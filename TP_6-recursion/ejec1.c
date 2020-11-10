@@ -9,10 +9,11 @@ int main(){
     printf("Numero: ");
     do{
         scanf("%i", &n);
+        if(n < 1)
+            printf("El numero que ingrese debe ser natural.\Numero: ");
     }while(n < 1);
 
     n_naturales(n);
-    getchar();
 
     return 0;
 }
@@ -22,6 +23,6 @@ void n_naturales(int n){
         printf("%i", n);
     else{
         n_naturales(n-1);
-        printf("%i", n);
+        printf(", %i", n);
     }
 }

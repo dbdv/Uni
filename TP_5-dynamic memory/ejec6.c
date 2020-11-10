@@ -61,7 +61,7 @@ void cargar(Empleado* arr[], int* cant){
     printf("Nombre: ");
     fflush(stdin);
     scanf("%s^{\n}", (*arr[i]).nom);
-    printf("%s",(*arr[i]).nom);
+    printf("%s\n",(*arr[i]).nom);
 
     printf("Tipo de documento(1=DNI, 2=PAS, 3=CF, 4=CIPE): ");
     do{
@@ -71,6 +71,7 @@ void cargar(Empleado* arr[], int* cant){
 
     printf("Nro de documento: ");
     do{
+        fflush(stdin);
       scanf("%li", &(*arr[i]).NroDoc);
       if((*arr[i]).NroDoc < 10000000 || (*arr[i]).NroDoc > 99999999){
         printf("Documento no valido. Intente de nuevo\n:");
