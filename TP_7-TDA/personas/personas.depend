@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1605758055 source:c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\personas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"persona.h"
+
+1605757841 c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\personas\persona.h
+

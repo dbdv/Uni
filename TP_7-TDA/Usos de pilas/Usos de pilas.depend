@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1605744908 source:c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\usos de pilas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pila.h"
+
+1605744908 c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\usos de pilas\pila.h
+

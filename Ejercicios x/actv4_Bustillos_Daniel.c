@@ -23,29 +23,29 @@ int main(){
             break;
         case 3 : printf("Adi%cs.\n",162);
             break;
-        default : printf("Debe elegir una opci&cn v%clida.\n\n",162,160);
+        default : printf("Debe elegir una opci%ccn v%clida.\n\n",162,160);
             break;
         }
     }while(op != 3);
 return 0;}
 
 void cargar_n_dni(long dni[], int *cant){
-    int aux = *cant, igual;
+    int aux = *cant, igual, i, j;
     do{
         printf("Escriba cuantos DNI va a cargar(1-%i): ",tam-aux);
         scanf("%i", cant);
         *cant += aux;
-        if(*cant < 0 || *cant > tam) printf("La cantidad ingresada es inv%clida.\n\n",160);
-    }while(*cant < 0 || *cant > tam);
+        if(*cant < 0 || *cant > tam-aux) printf("La cantidad ingresada es inv%clida.\n\n",160);
+    }while(*cant < 0 || *cant > tam-aux);
 
-    for(int i=aux; i<*cant; i++){
+    for(i=aux; i<*cant; i++){
         do{
             printf("Ingrese el %i%c DNI: ",i+1,167);
             scanf("%ld", &dni[i]);
 
             if(dni[i]<10000000 || dni[i]>99999999) printf("El DNI ingresado es inv%clido\n\n",160);
 
-            for(int j=0; j < i; j++){
+            for(j=0; j < i; j++){
                     if(dni[j] == dni[i]){
                     igual=1;
                     printf("El DNI que intenta ingresar ya fu%c ingresado\n\n",130);
@@ -56,5 +56,6 @@ void cargar_n_dni(long dni[], int *cant){
 }
 
 void mostrar_dni(long dni[], int cant){
-    for(int i=0; i<cant; i++) printf("%ld\n",dni[i]);
+    int i;
+    for(i=0; i<cant; i++) printf("%ld\n",dni[i]);
 }

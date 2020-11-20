@@ -31,29 +31,35 @@ int main(){
 
         /*MENU*/
         do{
-            printf("MENU DE OPCIONES\n0->Saber si una patente se encuentra registrada.\n1->Modificar una patente del registro.\n2->Salir\n: ");
+            printf("MENU DE OPCIONES\n1->Saber si una patente se encuentra registrada.\n2->Modificar una patente del registro.\n3->Salir\n: ");
             scanf("%i", &op);
 
-            if(op < 0 || op > 2)
-                printf("No es una opcion.\nIntente de nuevo: ");
-            else if(op == 0){
-                printf("Patente a buscar: ");
-                scanf("%s", buscar);
+            switch(op){
+                    case 1:
+                        printf("Patente a buscar: ");
+                        scanf("%s", buscar);
 
-                n = cant_localizacion_pat(pat_vehiculos, buscar);
+                        n = cant_localizacion_pat(pat_vehiculos, buscar);
 
-                if(!n)
-                    printf("La patente que busca no se encuentra en  el registro.\n");
-                else
-                    printf("La patente se ha encontrado %i veces en el registro.\n", n);
+                        if(!n)
+                            printf("La patente que busca no se encuentra en  el registro.\n");
+                        else
+                            printf("La patente se ha encontrado %i veces en el registro.\n", n);
+                        break;
+                    case 2:
+                        modificar_pat(pat_vehiculos);
+                        break;
+                    case 3:
+                        printf("Adios.\n");
+                        break;
+                    default:
+                        printf("No es una opcion.\nIntente de nuevo: ");
+                        break;
+            }
 
-            }else if(op == 1)
-                modificar_pat(pat_vehiculos);
-
-        }while(op != 2);
+        }while(op != 3);
     }
 
-    free((void*) pat_vehiculos);
     return 0;
 }
 
@@ -90,7 +96,7 @@ void carga_patente(patentes arreglo[]){
                 if(control) printf("Patente incorrecta.\nIntente de nuevo: ");
 
             }while(control);
-        }else{
+        }else if(op == 2){
             printf("\nPatente de formato AAXXXAA(letras en mayusculas)\n: ");
             do{
                 control = 0;
@@ -127,7 +133,7 @@ void modificar_pat(patentes arreglo[]){
     int i, j=0, n;
 
     printf("Patente a modificar: ");
-getchar();
+    getchar();
     scanf("%[^\n]s", modificar);
 
     n = cant_localizacion_pat(arreglo, modificar);
