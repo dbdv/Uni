@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1606785294 source:c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\lista de enteros\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"list.h"
+
+1606783798 c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\lista de enteros\list.h
+

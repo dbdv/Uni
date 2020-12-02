@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1606881478 source:c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\pmi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"ingresantes.h"
+	"listas.h"
+
+1606881184 c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\pmi\ingresantes.h
+
+1606838509 c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\pmi\listas.h
+
