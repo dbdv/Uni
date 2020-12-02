@@ -13,7 +13,7 @@ o->162
 u->163
 */
 
-void cargar_usuario(list_ingresante *lista)
+void cargar_usuarios(list_ingresante *lista)
 {
     long dni;
     int aux1;
@@ -45,34 +45,6 @@ void cargar_usuario(list_ingresante *lista)
     }while(dni < 10000000 || dni > 99999999);
     carga_dni(&pepe, dni);
 
-}
-
-void admin_menu(list_ingresante *lista)
-{
-    int option;
-    printf("\tMENU DE ADMINISTRADOR\n");
-    printf("1.Modificar el estado del ingreso de un ingresante.\t2.Dar de baja a un usuario.\t3.Buscar persona.\t4.Ver estado de un usuario.\t0.Salir del men%c\t10.Salir del programa.\n", 163);
-    do
-    {
-        scanf("%i", &option);
-        if(option < 0 || option > 4)
-            printf("No ingres%c una opci%cn v%clida. Intente nuevamente.\n",162,162,160);
-    }while(option != 0);
-
-    switch(option)
-    {
-    case 1:
-        break;
-    case 2:
-        break;
-    case 3:
-        break;
-    case 4:
-        break;
-    case 10:
-        printf("Hasta luego!\n");
-        return 0;
-    }
 }
 
 void anotar_carreras(char *carreras[], ingresante *ingre)
@@ -113,86 +85,248 @@ void anotar_carreras(char *carreras[], ingresante *ingre)
 
     //SOLUCIONAR OPERACION CARGAR CARRERA EN LISTA.H
 }
-void usuario_menu(char *carreras[])
+
+void verIngresante(list_ingresante lista, char* carreras[])
 {
-    int option;
-    char key;
+    long aux;
+    int controlaux = 1, i, aux1;
     ingresante ingre;
 
-    printf("MENU DE USUARIOS\n");
     do
     {
-        do
+        printf("Ingrese el DNI del ingresante que quiere consultar: ");
+        scanf("%ld", aux);
+        if(aux < 10000000 || aux > 99999999)
+            printf("El DNI que intenta buscar tiene errores. Intente nuevamente.\n");
+    }while(aux < 10000000 || aux > 99999999);
+
+    while(!isOos(lista) && controlaux)
+    {
+        ingre = copyy(lista);
+        if(aux == mostrar_dni(ingre))
         {
-            printf("Elija operacion:\n1-Inscribirse a carrera\t0. Salir\n");
-            /*key=getch();
-            option=(int)key;*/
-            scanf("%d", &option);
-            if(option<0 || option>2)
-                printf("No ha seleccionado una opci%cn v%clida. Intente nuevamente.\n", 162, 160);
-         }while(option < 0 || option > 3);
-         switch(option)
-         {
-            case 1: //FUNCION INSCRIBIR
-               anotar_carreras(carreras, &ingre);
-               break;
+            printf("Nombre: %s\n", mostrar_nom(ingre));
+            printf("Apellido: %s\n", mostrar_ape(ingre));
+            printf("DNI: %ld\n", mostrar_dni(ingre));
+            printf("Celular: %s\n", mostrar_cel(ingre));
+            printf("Estado : %s\n", mostrar_estado(ingre));
+            printf("Condicion de ingreso: %s\n", mostrar_estadoIngreso(ingre));
+            printf("Carrera/s:\n");
+            for(i = 0; i < 3; i++)
+            {
+                aux1 = *(mostrar_idCarreras(ingre)+i);
+                if( aux1 > 0 || aux1 < 24)
+                    printf("\t%s.\n", carreras[aux1]);
+            }
+            controlaux = 0;
         }
-    }while(option != 0);
+    }
+
+    if(isOos(lista) && controlaux == 1)
+        printf("El usuario que intenta ver no se encuentra en el listado.\n");
 }
+
+void ingresantesDe(char *carreras[])
+{
+    int i, aux;
+    for(i=0; i <= 24; i++ )
+        printf("%s", carreras[i]);
+    do
+    {
+        printf("Ingrese el ID de la carrera de la cual quiere ver el listado de ingresantes: ");
+        scanf("%i",&aux);
+        if(aux <0 || aux > 22)
+            printf("Debe ingresar un ID valido.\n");
+    }while(aux <0 || aux > 22);
+
+    //TERMINAR
+}
+
+void verCargados(list_ingresante lista)
+{
+
+}
+
+void inscribirOtra(list_ingresante *lista)
+{
+
+}
+
+void darBaja(list_ingresante *lista)
+{
+
+}
+
+void aspirantesDe(list_ingresante lista)
+{
+
+}
+
+void aprobaron(list_ingresante lista)
+{
+
+}
+
+void guardarTFA(list_ingresante lista)
+{
+
+}
+
+
 int main()
 {
-    FILE *f;
-    f = fopen("carreras.txt", "r");
+    int option, i, j=0, aux1;
+    long auxl;
+    char *carreras[25], aux[20];
+    list_ingresante lista;
+    ingresante cargados[20];
+    FILE *arch_carreras = fopen("carreras.txt", "r");
+    FILE *arch_ingresantes = fopen("ingresantes.txt", "r");
 
-    int option, i;
-    char key, pssw[10], pssw1[10], *carreras[25];
-
-    for(i=0; i<25;i++)
+    for(i=0; i<25; i++)
         carreras[i] = (char *) malloc(sizeof(char)*50);
-    strcpy(pssw, "admin");
 
-    for(i=0; i<=24; i++)
-        fgets(carreras[i],500,f);
+    for(i=0; i <= 24; i++)
+        fgets(carreras[i],1000,arch_carreras);
+
+    for(i=0; i < 20; i++)
+    {
+        init(&cargados[i]);
+        for(j=0; j<4; j++){
+            fgets(aux, 20, arch_ingresantes);
+            switch(j)
+                {
+                case 0:
+                    carga_nom(&cargados[i],aux);
+                    break;
+                case 1:
+                    carga_ape(&cargados[i],aux);
+                    break;
+                case  2:
+                    carga_cel(&cargados[i],aux);
+                    break;
+                case 3:
+                    carga_dni(&cargados[i],aux1);
+                    break;
+                }
+        }
+        /*strcpy(aux, mostrar_nom(cargados[i]));
+        printf("%s", aux);Para probar que la carga funciona*/
+    }
+    /*{
+        init(&cargados[i]);
+        for(j=0;j<=3;j++)
+        {
+                switch(j)
+                {
+                case 0:
+                    fread(aux,sizeof(char)*20, 1,arch_ingresantes);
+                    carga_nom(&cargados[i],aux);
+                    break;
+                case 1:
+                    fread(aux, sizeof(char)*20, 1,arch_ingresantes);
+                    carga_ape(&cargados[i],aux);
+                    break;
+                case  2:
+                    fread(aux, sizeof(char)*20, 1, arch_ingresantes);
+                    carga_cel(&cargados[i],aux);
+                    break;
+                case 3:
+                    fread(&aux1, sizeof(long int), 1, arch_ingresantes);
+                    carga_dni(&cargados[i],aux1);
+                    break;
+                }
+        }
+        strcpy(aux, mostrar_nom(cargados[i]));
+        printf("%s", aux);
+    }*/
+
 
     printf("\t\tPRACTICO DE MAQUINA INTEGRADOR\n");
     printf("\t\tSISTEMA UNSL\n");
     printf("\tCarrera: Ingenier%ca en inform%ctica\n\tIntegrantes: Diaz Emiliano-Bustillos Daniel\n\n", 161,160);
 
-    printf("1.Admin.\t2.Usuario.\t3.Presione 0 para salir.\n");
     do
     {
-        /*fflush(stdin);
-        key = getch();
-        option = (int)key;*/
+        printf("\tMENU DE OPCIONES DE OPERACIONES\n");
+        printf("1.Cargar una cantidad n de usuarios.\t2.Mostar los datos de un ingresante.\t3.Ver todos los ingresantes de una materia.\n");
+        printf("4.Ver todos los ingresantes cargados.\t5.Modificar el campo ingreso de un usuario.\t6.Inscribir a otra carrera.\n");
+        printf("7.Anular la inscripcion a carrera.\t8.Ver la cantidad de ingresantes de x carrera en la condicion aspirante.\n");
+        printf("9.Ver los ingresantes que aprobaron el ingreso.\t10.Guardar los datos de los ingresantes que pasaron al TFA.\t0.Salir\n");
+        printf("Operacion a realizar: ");
         scanf("%i", &option);
-        if(option < 0 || option > 2)
-            printf("Tiene que elegir una de las opciones disponibles. Intente nuevamente.\n");
-    }while(option <0 || option >2);
+        if(option < 0 || option > 10)
+            printf("Debe elegir una operacion de las que se muestran por pantalla. Intente nuevamente.\n");
 
     switch(option)
     {
     case 1:
-        printf("Ingerese la contrase%ca: ", 164);
-        do
-        {
-            fflush(stdin);
-            gets(pssw1);
-            if(!strcmp(pssw,pssw1))
-            {
-
-            }else
-            {
-                printf("Contrase%ca incorrecta. Intente nuevamente.\n");
-            }
-
-        }while(strcmp(pssw,pssw1) != 0);
-        case 2:
-            usuario_menu(carreras);
-            break;
+        if(isFull(lista))
+            printf("La lista se encuentra llena, no puede cargar mas usuarios.\n");
+        else
+            cargar_usuarios(&lista);
+        break;
+    case 2:
+        if(isEmpy(lista))
+            printf("Aun no hay usuarios cargados por lo que no puede consultar informacion.\n");
+        else
+            verIngresante(lista, carreras);
+        break;
+    case 3:
+        if(isEmpy(lista))
+            printf("Aun no hay usuarios cargados por lo que no puede consultar informacion.\n");
+        else
+            ingresantesDe(carreras);
+        break;
+    case 4:
+        if(isEmpy(lista))
+            printf("Aun no hay usuarios cargados por lo que no puede consultar informacion.\n");
+        else
+            verCargados(lista);
+        break;
+    case 5:
+        if(isEmpy(lista))
+            printf("Aun no hay usuarios cargados por lo que no puede consultar informacion.\n");
+        else
+            verCargados(lista);
+        break;
+    case 6:
+        if(isEmpy(lista))
+            printf("Aun no hay usuarios cargados por lo que no puede consultar informacion.\n");
+        else
+            inscribirOtra(&lista);
+        break;
+    case 7:
+        if(isEmpy(lista))
+            printf("Aun no hay usuarios cargados por lo que no puede consultar informacion.\n");
+        else
+            darBaja(&lista);
+        break;
+    case 8:
+        if(isEmpy(lista))
+            printf("Aun no hay usuarios cargados por lo que no puede consultar informacion.\n");
+        else
+            aspirantesDe(lista);
+        break;
+    case 9:
+        if(isEmpy(lista))
+            printf("Aun no hay usuarios cargados por lo que no puede consultar informacion.\n");
+        else
+            aprobaron(lista);
+        break;
+    case 10:
+        if(isEmpy(lista))
+            printf("Aun no hay usuarios cargados por lo que no puede consultar informacion.\n");
+        else
+            guardarTFA(lista);
+        break;
+    case 0:
+        printf("Hasta luego!\n");
     }
+    }while(option != 0);
 
-
-
+    fclose(arch_carreras);
+    fclose(arch_ingresantes);
 
     return 0;
 }

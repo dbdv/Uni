@@ -1,6 +1,6 @@
 #ifndef INGRESANTES_H_INCLUDED
 #define INGRESANTES_H_INCLUDED
-#define N 15
+#define N 20
 
 
 typedef struct{
@@ -90,7 +90,11 @@ int mostrar_estadoIngreso(ingresante ingre){
 }
 
 int* mostrar_idCarreras(ingresante ingre){
-   // return ingre.ID_carr;
+    int i, *aux=(int*)malloc(sizeof(int)*3);
+    for(i=0; i<3; i++)
+        *(aux+i) = ingre.ID_carr[i];
+    return aux;
+    /*Despues cuando queremos ver los ID cargados usamos una iteracion*/
 }
 
 /*FUNCIONES MODIFICAR*/
