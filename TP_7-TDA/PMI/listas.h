@@ -27,7 +27,7 @@ void forwardd(list_ingresante *ls){
 }
 
 int isOos(list_ingresante ls){
-    if(ls.cur->next == NULL)
+    if(ls.cur == NULL)
         return 1;
     else
         return 0;
@@ -43,7 +43,7 @@ void insertt(list_ingresante *ls, ingresante dato){
     (*nuevo).vipd = dato;
     if(ls->cur == ls->acc){
         nuevo->next = ls->cur;
-        ls->acc = ls->cur = ls->aux = nuevo;
+        ls->aux = nuevo;
     }else{
         ls->aux->next = nuevo;
         nuevo->next = ls->cur;
@@ -52,8 +52,11 @@ void insertt(list_ingresante *ls, ingresante dato){
 }
 
 void suppres(list_ingresante *ls){
-    if(ls->acc == ls->cur == ls->aux)
-        ls->acc = ls->cur = ls->aux = NULL;
+    if(ls->acc == ls->cur){
+        ls->acc = ls->cur->next;
+        free((void*) ls->cur);
+        ls->cur = ls->acc;
+    }
     else{
         ls->cur = ls->cur->next;
         free((void*)ls->aux->next);

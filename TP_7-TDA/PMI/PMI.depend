@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1606940261 source:c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\pmi\main.c
+1607173682 source:c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\pmi\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -7,7 +7,7 @@
 	"ingresantes.h"
 	"listas.h"
 
-1606939003 c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\pmi\ingresantes.h
+1607173625 c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\pmi\ingresantes.h
 
-1606838509 c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\pmi\listas.h
+1607287184 c:\users\daniel\desktop\prgramacion 1\uni\tp_7-tda\pmi\listas.h
 

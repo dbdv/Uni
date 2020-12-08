@@ -32,13 +32,8 @@ void carga_ingreso(ingresante* ingre, int ing){
     ingre->estIngreso = ing;
 }
 
-void carga_carrera(ingresante* ingre, int id){
-    if( ingre->ID_carr[0] < 0 || ingre->ID_carr[0] > 24)
-        (*ingre).ID_carr[0] = id;
-    else if ((*ingre).ID_carr[1] < 0 || (*ingre).ID_carr[1] > 24)
-        (*ingre).ID_carr[1] = id;
-    else if ((*ingre).ID_carr[2] < 0 || (*ingre).ID_carr[2] > 24)
-        (*ingre).ID_carr[2] = id;
+void carga_carrera(ingresante* ingre, int id, int i){
+    ingre->ID_carr[i] = id;
 }
 
 void carga_ape(ingresante* ingre, char ape[]){

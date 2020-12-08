@@ -80,7 +80,7 @@ void anotar_carreras(char *carreras[], ingresante *ingre)
             printf("Esta carrera no est%c disponible en a%cos impares.\nIntente nuevamente.\nID:",162,164);
     }while(id<0 || id > 23 || id == 10);
 
-    carga_carrera(ingre,id);
+    // AGREGAR ID carga_carrera(ingre,id);
     printf("%s",carreras[ingre->ID_carr[0]]);
 
     //SOLUCIONAR OPERACION CARGAR CARRERA EN LISTA.H
